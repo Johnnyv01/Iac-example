@@ -13,9 +13,9 @@ public class AwsInfraApp {
         RdsStack rdsStack = new RdsStack(app, "Rds", vpc.getVpc());
         rdsStack.addDependency(vpc);
 
-        ServiceStack aluraServiceStack = new ServiceStack(app, "Service", cluster.getCluster());
-        aluraServiceStack.addDependency(cluster);
-        aluraServiceStack.addDependency(rdsStack);
+        ServiceStack serviceStack = new ServiceStack(app, "Service", cluster.getCluster());
+        serviceStack.addDependency(cluster);
+        serviceStack.addDependency(rdsStack);
 
         app.synth();
     }
